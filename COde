@@ -1,0 +1,38 @@
+import tkinter as tk
+from PyDictionary import PyDictionary
+from tkinter import Tk, PhotoImage, messagebox
+import random
+from tkinter import Label
+from tkinter import Frame
+from PIL import Image, ImageTk
+
+window = tk.Tk()
+# Create GUI Window
+dictionary = PyDictionary("hotel")
+
+
+
+
+
+window.geometry("500x350")
+window.configure(bg="SkyBlue")
+window.title("Osu_type")
+
+image = Image.open("file:///C:/Users/ca822645/Downloads/%E2%80%94Pngtree%E2%80%94cartoon%20colorful%20coral%20under%20seabed_5691694.png")
+image = ImageTk.PhotoImage(image)
+
+image_label = tk.Label(window, image=image)
+image_label.pack()
+
+
+def function():
+  print(dictionary.printMeanings())
+  print(dictionary.getMeanings())
+  print(dictionary.translateTo("ja"))
+  #print (dictionary.getSynonyms())
+
+
+button_widget = tk.Button(window, text="Start", command=function).pack()
+
+window.mainloop()
+
