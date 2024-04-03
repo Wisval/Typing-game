@@ -6,7 +6,8 @@
 ##### Checklist: 
 Pygame GUI
 Background
-Class/object/sprites
+Class/object/sprites/animation
 object interaction with playing field
+point system interaction with words
 Keypress and their given values
-letter interactions if they spell out a given word taht is checked over through a dictionary library 
+letter interactions if they spell out a given word that is checked over through a dictionary library 
