@@ -1,9 +1,49 @@
 import pygame
 import random
 import sys
+import PIL
+from PIL import Image
+
+
+########################################################
+
+
+class penalty_line():
+  def __init__(self, x, y, width, height):
+    self.x = x
+    self.y = y
+    self.width = width
+    self.height = height
+
+class player():
+  def __init__(self, score, lives):
+    self.score = score
+    self.lives = lives
+
+class Timer():
+  def __init__(self, x, y, width, height):
+    self.x = x
+    self.y = y
+    self.width = width
+    self.height = height
+    
+class bubble():
+
+ def __init__(self, letter, value, x, y, image):
+   self.letter = letter
+   self.value = value
+   self.x = x
+   self.y = y
+   self.image = image
+
+
+########################################################
+
+
+pygame.init()
 
 # Define the background colour 
-# using RGB color coding. 
+
 background_colour  = (135, 206, 235) 
 
 # Define the dimensions of 
@@ -16,7 +56,16 @@ pygame.display.set_caption('Typing_G')
 # Fill the background colour to the screen 
 screen.fill(background_colour) 
 
-#bg_image = pygame.image.load("file:///C:/Users/ca822645/Downloads/%E2%80%94Pngtree%E2%80%94cartoon%20colorful%20coral%20under%20seabed_5691694.png")
+image_metadata = {
+    "file_name": "Background.png",
+    "file_type": "PNG",
+    "file_size": "1024 KB",
+}
+
+
+bg_image = pygame.image.load('Background.png')
+bg_image = pygame.transform.scale(bg_image, (455, 400))
+
 
 #INSIDE OF THE GAME LOOP
 #screen.blit(bg_image , (0, 0))
@@ -36,3 +85,14 @@ while running:
         # Check for QUIT event       
         if event.type == pygame.QUIT: 
             running = False
+
+
+
+########################################################
+
+
+
+
+
+          
+#file:///C:/Users/ca822645/Downloads/%E2%80%94Pngtree%E2%80%94cartoon%20colorful%20coral%20under%20seabed_5691694.png
