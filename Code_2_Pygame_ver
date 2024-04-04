@@ -20,6 +20,9 @@ class player():
     self.score = score
     self.lives = lives
 
+p1 = player(0, 3)
+
+
 class Timer():
   def __init__(self, x, y, width, height):
     self.x = x
@@ -29,13 +32,32 @@ class Timer():
     
 class bubble():
 
- def __init__(self, letter, value, x, y, image):
+ def __init__(self, letter, value, x, y, points):
    self.letter = letter
    self.value = value
    self.x = x
    self.y = y
-   self.image = image
+   self.points = points
+   
 
+# idea of the bubble swaying animation through the 
+# incremantal increase/deacrease of the 
+# x coordinate, by making it so that if the bubble's 
+# original spawn x coordinate has 
+# been increased by 50, the bubble's x coordinate 
+# increase slows down exponentially until
+# at a certain point the increase becomes 0 and the 
+# bubble's x coordinate is instead 
+# substracted exponentially for the bubble to go the 
+# opposite way, producing a smoother 
+# swinging animation.
+
+
+# as opposed to that of a zigzag, where if the 
+# condition was that if the bubble's 
+# original x coordinate has been increased by 50, the 
+# bubble's x coordinate is instantly 
+# subtracted as to go the opposite way.
 
 ########################################################
 
@@ -44,7 +66,7 @@ pygame.init()
 
 # Define the background colour 
 
-background_colour  = (135, 206, 235) 
+background_colour  = (135, 190, 255) 
 
 # Define the dimensions of 
 # screen object(width,height) 
@@ -56,15 +78,15 @@ pygame.display.set_caption('Typing_G')
 # Fill the background colour to the screen 
 screen.fill(background_colour) 
 
-image_metadata = {
-    "file_name": "Background.png",
-    "file_type": "PNG",
-    "file_size": "1024 KB",
-}
+#image_metadata = {
+#    "file_name": "Background.png",
+#    "file_type": "PNG",
+#    "file_size": "1024 KB",
+#}
 
 
-bg_image = pygame.image.load('Background.png')
-bg_image = pygame.transform.scale(bg_image, (455, 400))
+#bg_image = pygame.image.load('Background.png')
+#bg_image = pygame.transform.scale(bg_image, (455, 400))
 
 
 #INSIDE OF THE GAME LOOP
