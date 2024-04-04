@@ -11,7 +11,7 @@ window = tk.Tk()
 dictionary = PyDictionary("hotel")
 
 
-
+ 
 
 
 window.geometry("500x350")
