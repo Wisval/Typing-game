@@ -63,13 +63,13 @@ x_coordinate = [
 
 
 def rise(): 
-  n = 400
+  n = 410
   while n > 0 :
     n -= 1 
   return n
 
 
-Bubble = bubble(random.choice(Letters), 1, 235, 390, 50)
+Bubble = bubble(random.choice(Letters), 1, random.choice(x_coordinate), rise(), 50)
 
 
 
@@ -149,6 +149,9 @@ while running:
 
 
 
+
+          
+#file:///C:/Users/ca822645/Downloads/%E2%80%94Pngtree%E2%80%94cartoon%20colorful%20coral%20under%20seabed_5691694.png
 
           
 #file:///C:/Users/ca822645/Downloads/%E2%80%94Pngtree%E2%80%94cartoon%20colorful%20coral%20under%20seabed_5691694.png
