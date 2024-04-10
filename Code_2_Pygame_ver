@@ -5,7 +5,8 @@ import PIL
 from PIL import Image
 
 
-########################################################
+
+#######################################################
 
 
 class penalty_line():
@@ -34,27 +35,53 @@ class Timer():
     self.height = height
 
 
+class Text(pygame.sprite.Sprite):
+  def __init__(self, text, size, color, width, height):
+      super().__init__() 
+      pygame.sprite.Sprite.__init__(self) 
+    
+      self.font = pygame.font.SysFont("Arial", size)
+      self.textSurf = self.font.render(text, 1, color)
+      self.image = pygame.Surface((width, height))
+      W = self.textSurf.get_width()
+      H = self.textSurf.get_height()
+      self.image.blit(self.textSurf, [width/2 - W/2, height/2 - H/2])
+    
+      self.text = text
+      self.size = size
+      self.color = color
+      self.width = width
+      self.height = height
+
+
 
 class Collectables(pygame.sprite.Sprite):
 
  width = 50
  height = 50
- def __init__(self, letter, x, y):
+ def __init__(self, x, y):
   super().__init__()
   self.surf = pygame.Surface([self.width, self.height])
+  self.image = self.surf
   self.rect = self.surf.get_rect()
-  self.letter = letter
+  #self.letter = letter
   self.x = x
   self.y = y
   self.rect.x = x
   self.rect.y = y
+  self.image.fill((0, 0, 0))
 
 
-class bubble(Collectables):
- point_value = 1
- def __init__(self, letter, x, y):
-   super().__init__(letter, x, y)
-   self.surf.fill((255, 255, 255))
+class bubble(Collectables, Text):
+  point_value = 1
+  def __init__(self, x, y, text, size, color, width, height):
+    Collectables.__init__(self, x, y)
+    Text.__init__(self, text, size, color, width, height)
+
+  
+    self.image.fill((255, 255, 255))
+  
+   
    
 
 
@@ -82,15 +109,7 @@ x_coordinate = [
 
 
 
-def rise(): 
-  n = 410
-  while n > 0 :
-    n -= 1 
-  return n
 
-
-
-Bubble = bubble(random.choice(Letters), random.choice(x_coordinate), rise())
 
 
 # idea of the bubble swaying animation through the 
@@ -113,7 +132,7 @@ Bubble = bubble(random.choice(Letters), random.choice(x_coordinate), rise())
 # bubble's x coordinate is instantly 
 # subtracted as to go the opposite way.
 
-########################################################
+#######################################################
 
 
 pygame.init()
@@ -131,6 +150,23 @@ pygame.display.set_caption('Typing_G')
 
 # Fill the background colour to the screen 
 screen.fill(background_colour) 
+
+pygame.display.flip() 
+
+
+def rise(): 
+  n = 410
+  while n > 0 :
+    n -= 1
+    pygame.time.delay(3)
+  return n
+
+
+
+Bubble = bubble(random.choice(x_coordinate),
+  rise(),
+  random.choice(Letters),
+  20, (0, 0, 0), 50, 50)
 
 
 
@@ -163,7 +199,7 @@ while running:
 
 
 
-########################################################
+#######################################################
 
 
 
@@ -171,3 +207,26 @@ while running:
 
           
 #file:///C:/Users/ca822645/Downloads/%E2%80%94Pngtree%E2%80%94cartoon%20colorful%20coral%20under%20seabed_5691694.png
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
