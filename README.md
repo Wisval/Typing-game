@@ -11,3 +11,6 @@ object interaction with playing field
 point system interaction with words
 Keypress and their given values
 letter interactions if they spell out a given word that is checked over through a dictionary library 
+
+##### UI elements
+[![UI-elements.png](https://i.postimg.cc/4NvfJ53s/UI-elements.png)](https://postimg.cc/vcBFh59N)
