@@ -35,26 +35,6 @@ class Timer():
     self.height = height
 
 
-class Text(pygame.sprite.Sprite):
-  def __init__(self, text, size, color, width, height):
-      super().__init__() 
-      pygame.sprite.Sprite.__init__(self) 
-    
-      self.font = pygame.font.SysFont("Arial", size)
-      self.textSurf = self.font.render(text, 1, color)
-      self.image = pygame.Surface((width, height))
-      W = self.textSurf.get_width()
-      H = self.textSurf.get_height()
-      self.image.blit(self.textSurf, [width/2 - W/2, height/2 - H/2])
-    
-      self.text = text
-      self.size = size
-      self.color = color
-      self.width = width
-      self.height = height
-
-
-
 class Collectables(pygame.sprite.Sprite):
 
  width = 50
@@ -72,21 +52,41 @@ class Collectables(pygame.sprite.Sprite):
   self.image.fill((0, 0, 0))
 
 
+class Text(pygame.sprite.Sprite):
+  def __init__(self, text, size, color, width, height):
+      super().__init__() 
+      self.text = text
+      self.size = size
+      self.color = color
+      self.width = width
+      self.height = height
+
+      self.font = pygame.font.SysFont("Arial", size)
+      self.textSurf = self.font.render(text, 1, color)
+      self.image = pygame.Surface((width, height))
+      W = self.textSurf.get_width()
+      H = self.textSurf.get_height()
+      self.image.blit(self.textSurf, [width/2 - W/2, height/2 - H/2])
+
+
 class bubble(Collectables, Text):
   point_value = 1
   def __init__(self, x, y, text, size, color, width, height):
-    Collectables.__init__(self, x, y)
-    Text.__init__(self, text, size, color, width, height)
+      super().__init__(x, y)
+      self.initialize(x, y, text, size, color, width, height)
 
+  def initialize(self, x, y, text, size, color, width, height):
+      Collectables.__init__(self, x, y)
+      Text.__init__(self, text, size, color, width, height)
+      self.image.fill((255, 255, 255))
   
-    self.image.fill((255, 255, 255))
-  
-   
-   
-
-
-
-   #self.rect = pygame.Rect(self.x, self.y, self.width, self.height) 
+#note to self this could be easier as the class text 
+#isn't needed if images were usable, indicating the #current identity of the sprite 
+#through an image rather than text as the bubble class #has to inherit from two classes
+#as the bubble object could instead have a randomized #given identity from the letter, 
+#and depending on the chosen letter, the corresponding 
+#image would appear on the sprite 
+#on the screen
 
 
 
@@ -163,10 +163,8 @@ def rise():
 
 
 
-Bubble = bubble(random.choice(x_coordinate),
-  rise(),
-  random.choice(Letters),
-  20, (0, 0, 0), 50, 50)
+Bubble = bubble(random.choice(x_coordinate), rise(), random.choice(Letters), 20, 
+  (0, 0, 0), 50, 50)
 
 
 
@@ -179,23 +177,37 @@ for entity in all_sprites:
 
 
 
+  bg = pygame.image.load("Background.png")
+
+  #INSIDE OF THE GAME LOOP
+  screen.blit(bg, (455, 400))
+
+  # Update the display using flip 
+  pygame.display.flip() 
+
+  # Variable to keep our game loop running 
+  running = True
+
+  # game loop 
+  while running: 
+
+      for event in pygame.event.get(): 
+          if event.type == pygame.QUIT: 
+              running = False
+
+      # Update all sprites
+      all_sprites.update()
+
+      # Fill the background color
+      screen.fill(background_colour)
+
+      # Draw all sprites on the screen
+      all_sprites.draw(screen)
+
+      # Update the display
+      pygame.display.flip()
 
 
-# Update the display using flip 
-pygame.display.flip() 
-
-# Variable to keep our game loop running 
-running = True
-
-# game loop 
-while running: 
-
-# for loop through the event queue   
-    for event in pygame.event.get(): 
-
-        # Check for QUIT event       
-        if event.type == pygame.QUIT: 
-            running = False
 
 
 
@@ -207,10 +219,6 @@ while running:
 
           
 #file:///C:/Users/ca822645/Downloads/%E2%80%94Pngtree%E2%80%94cartoon%20colorful%20coral%20under%20seabed_5691694.png
-
-
-
-
 
 
 
