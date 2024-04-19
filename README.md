@@ -14,3 +14,6 @@ letter interactions if they spell out a given word that is checked over through 
 
 ##### UI elements
 [![UI-elements.png](https://i.postimg.cc/4NvfJ53s/UI-elements.png)](https://postimg.cc/vcBFh59N)
+
+##### Example
+[![Screenshot-2024-04-19-105050.png](https://i.postimg.cc/L4cJPVCN/Screenshot-2024-04-19-105050.png)](https://postimg.cc/Wt7pL0Pk)
